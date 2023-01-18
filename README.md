@@ -93,3 +93,28 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 ```
+
+### Example
+
+```swift
+class Example {
+    
+    init() {
+        Resolver.register(PrintService() as PrintServiceProtocol)
+        let vm = ViewModel()
+        vm.doSomething()
+    }
+    
+}
+
+class ViewModel {
+    
+    @Inject<PrintServiceProtocol> private var printService: PrintServiceProtocol
+    
+    func doSomething() {
+        printService.printSomething(text: "Hello World!")
+    }
+    
+}
+
+```
